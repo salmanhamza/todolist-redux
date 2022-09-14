@@ -1,6 +1,9 @@
 import express from "express";
-import mongoose from "mongoose";
+import Connection from "./database/db.js";
 const app = express();
-app.listen("8000", () => {
+
+Connection();
+const PORT = 8000;
+app.listen(PORT, () => {
   console.log("app is working");
 });
