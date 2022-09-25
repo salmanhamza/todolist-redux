@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADDTODO, GETTODO } from "./constant";
+import { ADDTODO, GETTODO, TOGGLETODO, UPDATETODO } from "./constant";
 
 const URL = "http://localhost:8000";
 
@@ -24,7 +24,15 @@ export const getAllTodos = () => async (dispatch) => {
 export const toggleTodo = (id) => async (dispatch) => {
   try {
     const res = await axios.get(`${URL}/todos/${id}`);
-    dispatch({ type: GETTODO, payload: res.data });
+    dispatch({ type: TOGGLETODO, payload: res.data });
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const updateTodo = (id, data) => async (dispatch) => {
+  try {
+    const res = await axios.put(`${URL}/todos/${id}`, { data });
+    dispatch({ type: UPDATETODO, payload: res.data });
   } catch (error) {
     console.log(error);
   }

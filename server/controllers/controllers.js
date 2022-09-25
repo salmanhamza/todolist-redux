@@ -37,3 +37,17 @@ export const toggleTodo = async (req, res) => {
     return res.status(500).json(error.message);
   }
 };
+
+export const updateTodo = async (req, res) => {
+  try {
+    await Todo.findByIdAndUpdate(
+      { _id: req.params.id },
+      { data: req.body.data }
+    );
+    const todo = await Todo.findById(req.params.id);
+
+    return res.status(200).json(todo);
+  } catch (error) {
+    return res.status(500).json(error.message);
+  }
+};
