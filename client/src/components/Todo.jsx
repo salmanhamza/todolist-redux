@@ -1,5 +1,5 @@
 import React from "react";
-import { toggleTodo, updateTodo } from "../redux/actions";
+import { toggleTodo, updateTodo, deleteTodo } from "../redux/actions";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 
@@ -33,7 +33,7 @@ const Todo = ({ todo }) => {
           onChange={(e) => setText(e.target.value)}
         />
       </form>
-      <span className="icon">
+      <span className="icon" onClick={() => dispatch(deleteTodo(todo._id))}>
         <i className="fas fa-trash" />
       </span>
       <span

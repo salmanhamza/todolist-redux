@@ -1,5 +1,12 @@
 import axios from "axios";
-import { ADDTODO, GETTODO, TOGGLETODO, UPDATETODO } from "./constant";
+import {
+  ADDTODO,
+  GETTODO,
+  TOGGLETODO,
+  UPDATETODO,
+  DELETETODO,
+  TOGGLETABS,
+} from "./constant";
 
 const URL = "http://localhost:8000";
 
@@ -36,4 +43,16 @@ export const updateTodo = (id, data) => async (dispatch) => {
   } catch (error) {
     console.log(error);
   }
+};
+export const deleteTodo = (id) => async (dispatch) => {
+  try {
+    const res = await axios.delete(`${URL}/todos/${id}`);
+    dispatch({ type: DELETETODO, payload: res.data });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const toggleTab = (tab) => async (dispatch) => {
+  dispatch({ type: TOGGLETABS, selected: tab });
 };
