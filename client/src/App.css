@@ -61,4 +61,18 @@ article {
   border: none;
   cursor: pointer;
   width: 100px;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.button.selected {
+  color: #fff;
+  background-color: #6c6777;
+}
+
+.button.clear {
+  color: #fff;
+  background-color: #ee1630;
+  float: right;
+  width: 170px;
 }
